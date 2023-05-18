@@ -13,15 +13,42 @@ namespace TestProject1
         [Fact]
         public void SimpleGreet()
         {
-            var result = _sut.Greet("Gino");
-            Assert.Equal("Hello, Gino!", result);
+            string[] name = { "Gino" };
+            string[] result = { _sut.Greet(name) };
+            string expected = "Hello, Gino!";
+            Assert.Equal(expected, result[0]);
         }
         [Fact]
         public void SimpleNullGreet()
         {
-            var result = _sut.Greet(null);
-            Assert.Equal("Hello, my friend!", result);
+            string[] name = null;
+            string[] result = { _sut.Greet(name) };
+            string expected = "Hello, my friend!";
+            Assert.Equal(expected, result[0]);
         }
-        bla bla bla
+        [Fact]
+        public void ShoutingGreet()
+        {
+            string[] name = { "JERRY" };
+            string[] result = { _sut.Greet(name) };
+            string expected = "HELLO JERRY!";
+            Assert.Equal(expected, result[0]);
+        }
+        [Fact]
+        public void GroupOfTwoGreet()
+        {
+            string[] name = { "Jill", "Jane" };
+            string[] result = { _sut.Greet(name) };
+            string expected = "Hello, Jill and Jane!";
+            Assert.Equal(expected, result[0]);
+        }
+        [Fact]
+        public void GroupGreet()
+        {
+            string[] name = { "Qui", "Quo", "Qua", "Tip", "Tap" };
+            string[] result = { _sut.Greet(name) };
+            string expected = "Hello, Qui, Quo, Qua, Tip, and Tap!";
+            Assert.Equal(expected, result[0]);
+        }
     }
 }
