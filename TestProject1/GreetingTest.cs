@@ -47,7 +47,15 @@ namespace TestProject1
         {
             string[] name = { "Qui", "Quo", "Qua", "Tip", "Tap" };
             string[] result = { _sut.Greet(name) };
-            string expected = "Hello, Qui, Quo, Qua, Tip, and Tap!";
+            string expected = "Hello, Qui, Quo, Qua, Tip and Tap!";
+            Assert.Equal(expected, result[0]);
+        }
+        [Fact]
+        public void MixedGreet()
+        {
+            string[] name = { "Qui", "QUO", "Qua", "TIP", "Tap" };
+            string[] result = { _sut.Greet(name) };
+            string expected = "Hello, Qui, Qua and Tap! AND HELLO QUO AND TIP!";
             Assert.Equal(expected, result[0]);
         }
     }
